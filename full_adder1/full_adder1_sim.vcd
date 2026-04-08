@@ -1,0 +1,73 @@
+$date
+	Tue Apr 07 22:02:26 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module test $end
+$var wire 1 ! So $end
+$var wire 1 " Co $end
+$var reg 1 # Ai $end
+$var reg 1 $ Bi $end
+$var reg 1 % Ci $end
+$scope module u_adder $end
+$var wire 1 # Ai $end
+$var wire 1 $ Bi $end
+$var wire 1 % Ci $end
+$var wire 1 ! So $end
+$var wire 1 " Co $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0%
+0$
+0#
+0"
+0!
+$end
+#10
+1!
+1%
+#20
+1$
+0%
+#30
+0!
+1"
+1%
+#40
+1!
+0"
+1#
+0$
+0%
+#50
+0!
+1"
+1%
+#60
+1$
+0%
+#70
+1!
+1%
+#80
+0"
+0!
+0#
+0$
+0%
+#90
+1!
+1%
+#100
+1$
+0%
