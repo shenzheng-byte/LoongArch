@@ -1,0 +1,93 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\va_math.vpi";
+S_00000139d5846100 .scope module, "test" "test" 2 3;
+ .timescale -9 -9;
+v00000139d58464c0_0 .var "ai", 0 0;
+v00000139d5844ab0_0 .var "bi", 0 0;
+v00000139d5844b50_0 .net "so_get", 0 0, L_00000139d5837100;  1 drivers
+v00000139d5844bf0_0 .net "so_lose", 0 0, L_00000139d5837560;  1 drivers
+v00000139d5844c90_0 .net "so_normal", 0 0, L_00000139d5837250;  1 drivers
+S_00000139d5846290 .scope module, "u_wire_delay" "time_delay_module" 2 26, 3 1 0, S_00000139d5846100;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "ai";
+    .port_info 1 /INPUT 1 "bi";
+    .port_info 2 /OUTPUT 1 "so_lose";
+    .port_info 3 /OUTPUT 1 "so_get";
+    .port_info 4 /OUTPUT 1 "so_normal";
+L_00000139d5837560/d .functor AND 1, v00000139d58464c0_0, v00000139d5844ab0_0, C4<1>, C4<1>;
+L_00000139d5837560 .delay 1 (20000000000,20000000000,20000000000) L_00000139d5837560/d;
+L_00000139d5837100/d .functor AND 1, v00000139d58464c0_0, v00000139d5844ab0_0, C4<1>, C4<1>;
+L_00000139d5837100 .delay 1 (5000000000,5000000000,5000000000) L_00000139d5837100/d;
+L_00000139d5837250 .functor AND 1, v00000139d58464c0_0, v00000139d5844ab0_0, C4<1>, C4<1>;
+v00000139d590bc50_0 .net "ai", 0 0, v00000139d58464c0_0;  1 drivers
+v00000139d58130e0_0 .net "bi", 0 0, v00000139d5844ab0_0;  1 drivers
+v00000139d590ba90_0 .net "so_get", 0 0, L_00000139d5837100;  alias, 1 drivers
+v00000139d590b750_0 .net "so_lose", 0 0, L_00000139d5837560;  alias, 1 drivers
+v00000139d5846420_0 .net "so_normal", 0 0, L_00000139d5837250;  alias, 1 drivers
+    .scope S_00000139d5846100;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000139d58464c0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00000139d5846100;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000139d5844ab0_0, 0, 1;
+    %delay 30, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000139d5844ab0_0, 0, 1;
+    %delay 30, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000139d5844ab0_0, 0, 1;
+    %delay 30, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000139d5844ab0_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_00000139d5846100;
+T_2 ;
+    %vpi_call 2 36 "$monitor", "Time: %3d ns | ai=%b | bi=%b | so_lose=%b | so_get=%b | so_normal=%b", $time, v00000139d58464c0_0, v00000139d5844ab0_0, v00000139d5844bf0_0, v00000139d5844b50_0, v00000139d5844c90_0 {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_00000139d5846100;
+T_3 ;
+    %delay 150, 0;
+    %vpi_call 2 43 "$display", "\012\344\273\277\347\234\237\347\273\223\346\235\237\357\274\201" {0 0 0};
+    %vpi_call 2 44 "$finish" {0 0 0};
+    %end;
+    .thread T_3;
+    .scope S_00000139d5846100;
+T_4 ;
+    %vpi_call 2 49 "$dumpfile", "wave.vcd" {0 0 0};
+    %vpi_call 2 50 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000139d5846100 {0 0 0};
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "time_delay_tb.v";
+    "time_delay.v";
