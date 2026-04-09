@@ -1,0 +1,50 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "E:\iVerilog\iverilog\lib\ivl\va_math.vpi";
+S_000002915d566780 .scope module, "test" "test" 2 3;
+ .timescale -9 -9;
+P_000002915d566e90 .param/real "CLK_CYCLE" 0 2 6, Cr<m5000000000000000gfc5>; value=10.0000
+P_000002915d566ec8 .param/l "CLK_FREQ" 0 2 5, +C4<00000000000000000000000001100100>;
+v000002915d566c00_0 .var "clk", 0 0;
+    .scope S_000002915d566780;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002915d566c00_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000002915d566780;
+T_1 ;
+    %delay 5, 0;
+    %load/vec4 v000002915d566c00_0;
+    %inv;
+    %store/vec4 v000002915d566c00_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_000002915d566780;
+T_2 ;
+    %delay 10, 0;
+    %vpi_func 2 14 "$time" 64 {0 0 0};
+    %cmpi/u 1000, 0, 64;
+    %flag_inv 5; GE is !LT
+    %jmp/0xz  T_2.0, 5;
+    %vpi_call 2 15 "$finish" {0 0 0};
+T_2.0 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_000002915d566780;
+T_3 ;
+    %vpi_call 2 20 "$dumpfile", "clk.vcd" {0 0 0};
+    %vpi_call 2 21 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002915d566780 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "clk.v";
